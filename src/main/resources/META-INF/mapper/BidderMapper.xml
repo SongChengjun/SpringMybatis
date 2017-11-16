@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.com.carsmart.song.mapper.BidderMapper">
+    <select id="selectById" resultType="Bidder">
+        SELECT * FROM bidder WHERE id=#{id}
+    </select>
+
+    <select id="selectByName" resultType="Bidder">
+        SELECT * FROM bidder WHERE name=#{name}
+    </select>
+
+    <insert id="insertBidder" >
+        INSERT INTO bidder (id,name,password,idNum,mobile,address)
+          VALUES (#{id},#{name},#{password},#{idNum},#{mobile},#{address})
+    </insert>
+
+    <update id="updateBidder">
+        update bidder set
+            name = #{name},
+            password = #{password},
+            mobile = #{mobile},
+            idNum = #{idNum},
+            address = #{address}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM Bidder WHERE id=#{id}
+    </delete>
+
+</mapper>
