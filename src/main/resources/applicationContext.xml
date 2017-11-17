@@ -77,4 +77,7 @@
     <!-- 配置基于注解的声明式事务 -->
     <tx:annotation-driven transaction-manager="txManager"/>
 
+    <!-- 获取代理当前对象 -->
+    <aop:aspectj-autoproxy expose-proxy="true"/>
+
 </beans>
