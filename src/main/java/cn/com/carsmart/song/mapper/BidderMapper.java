@@ -2,7 +2,11 @@ package cn.com.carsmart.song.mapper;
 
 import cn.com.carsmart.song.dao.Bidder;
 
+import java.util.List;
+
 public interface BidderMapper {
+
+    List<Bidder> findAll();
 
     Bidder selectByName(String name);
 

@@ -9,14 +9,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:ApplicationContext.xml")
+@ContextConfiguration("classpath:applicationContext.xml")
 public class BidderMapperTest {
 
     private static Logger LOGGER = LoggerFactory.getLogger(BidderMapperTest.class);
 
     @Autowired
     BidderMapper bidderMapper;
+
+    @Test
+    public void findAll() throws Exception {
+        List<Bidder> list = bidderMapper.findAll();
+        LOGGER.info(list != null && list.size() >0 ? list.get(0).toString() : "");
+
+    }
 
     @Test
     public void insertBidder() throws Exception {
