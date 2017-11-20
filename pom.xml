@@ -20,6 +20,7 @@
     <aspectj-version>1.7.4</aspectj-version>
     <jackson-version>2.3.4</jackson-version>
     <xstream-version>1.4.7</xstream-version>
+    <commons-lang.version>2.6</commons-lang.version>
   </properties>
 
   <dependencies>
@@ -131,6 +132,7 @@
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
       <version>2.5</version>
+      <!-- 编译，测试需要该依赖，容器会提供该依赖 -->
       <scope>provided</scope>
     </dependency>
 
@@ -139,6 +141,14 @@
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>${logback-version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>${commons-lang.version}</version>
+      <!-- 编译，测试，运行阶段需要该依赖，默认scope -->
+      <scope>compile</scope>
     </dependency>
 
     <!--mybatis -->

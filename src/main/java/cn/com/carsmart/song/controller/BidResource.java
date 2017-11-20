@@ -43,7 +43,7 @@ public class BidResource {
             result.setMsg("success");
             LOGGER.info("竞价成功");
         } catch (BidException e) {
-            LOGGER.error("出价失败:" + e.getMessage(), e);
+            LOGGER.error("出价失败:" + e.getMessage());
             result.setStatus(false);
             result.setMsg(e.getMessage());
         }

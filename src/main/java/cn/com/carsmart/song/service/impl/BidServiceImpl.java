@@ -8,6 +8,8 @@ import cn.com.carsmart.song.mapper.BidPriceLogMapper;
 import cn.com.carsmart.song.mapper.BidderMapper;
 import cn.com.carsmart.song.mapper.LotMapper;
 import cn.com.carsmart.song.service.BidService;
+import cn.com.carsmart.song.service.BidderService;
+import cn.com.carsmart.song.util.DateFormatUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +28,7 @@ public class BidServiceImpl implements BidService {
     private static Logger LOGGER = LoggerFactory.getLogger(BidServiceImpl.class);
 
     @Autowired
-    BidderMapper bidderMapper;
+    BidderService bidderService;
 
     @Autowired
     LotMapper lotMapper;
@@ -36,7 +38,7 @@ public class BidServiceImpl implements BidService {
 
     public void bid(JSONObject bid) throws BidException {
         Date bidTime = new Date();
-        LOGGER.info(String.format("竞价:%s, bidTime:%s", bidTime, bid));
+        LOGGER.info(String.format("竞价:%s, bidTime:%s", bid, DateFormatUtil.format(bidTime)));
 
 
         BigDecimal price = bid.getBigDecimal("price");
@@ -48,7 +50,7 @@ public class BidServiceImpl implements BidService {
         }
 
         Long bidderId = bid.getLong("bidderId");
-        Bidder bidder = bidderMapper.selectById(bidderId);
+        Bidder bidder = bidderService.selectById(bidderId);
         if (bidder == null) {
             throw new BidException("用户不存在");
         }

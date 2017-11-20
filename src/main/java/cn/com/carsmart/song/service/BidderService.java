@@ -7,4 +7,6 @@ public interface BidderService {
 
     Page<Bidder> findAll();
 
+    Bidder selectById(long id);
+
 }
